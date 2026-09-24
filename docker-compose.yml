@@ -1,0 +1,7 @@
+services:
+  redtwin:
+    build: .
+    ports:
+      - "8120:8000"
+    environment:
+      REDTWIN_FACTORY_ID: genesis-factory-01
