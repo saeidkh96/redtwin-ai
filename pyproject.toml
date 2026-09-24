@@ -1,7 +1,7 @@
 [project]
 name = "redtwin-ai"
 version = "1.0.0"
-description = "AI-enabled Smart Factory Digital Twin"
+description = "Smart Factory Digital Twin with deterministic scenarios and explainable, rule-based risk insights"
 requires-python = ">=3.11"
 dependencies = ["fastapi>=0.115,<1", "uvicorn[standard]>=0.30,<1"]
 

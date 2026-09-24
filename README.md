@@ -1,56 +1,264 @@
-# RedTwin AI
+# 🚀 RedPA AI
 
-**RedTwin AI** is an AI-enabled Smart Factory Digital Twin. It maintains a simulated operational state, runs deterministic what-if scenarios, detects operational risk, and publishes integration-ready events for the RedNexus ecosystem.
+![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-Production-009688?logo=fastapi)
+![LangGraph](https://img.shields.io/badge/LangGraph-Agentic_AI-purple)
+![Ollama](https://img.shields.io/badge/Ollama-Local_LLM-black)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-336791?logo=postgresql)
+![Qdrant](https://img.shields.io/badge/Qdrant-Vector_DB-DC244C)
+![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?logo=docker)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-## v1.0.0 capabilities
+**RedPA AI** is an open-source, production-oriented Agentic AI platform
+for building intelligent assistants with Retrieval-Augmented Generation
+(RAG), document understanding, conversational memory (planned), and
+multi-agent workflows.
 
-- Five-machine factory model with temperature, vibration, energy, throughput and health telemetry
-- Deterministic tick runtime with state transitions: `idle`, `running`, `degraded`, `failed`
-- What-if scenarios: overload, cooling failure, vibration spike and recovery
-- Explainable risk and anomaly insights
-- FastAPI REST API and a dependency-free web dashboard
-- Versioned RedNexus capability/event contract
-- Docker, CI, tests and release evidence
+------------------------------------------------------------------------
 
-## Quick start
+# Features
 
-```bash
+-   JWT Authentication
+-   Conversation Management
+-   Persistent Chat History
+-   LangGraph Agent Workflow
+-   Planner-based Routing
+-   Conversational RAG
+-   Document Upload
+-   Text Extraction
+-   Intelligent Chunking
+-   Embedding Generation
+-   Semantic Retrieval
+-   Qdrant Vector Database
+-   Ollama Local Models
+-   PostgreSQL Persistence
+-   Async FastAPI API
+-   Docker Ready
+-   Swagger Documentation
+
+------------------------------------------------------------------------
+
+# Architecture
+
+``` text
+Client
+   │
+   ▼
+FastAPI API
+   │
+   ▼
+Chat Service
+   │
+   ▼
+Orchestrator
+   │
+   ▼
+LangGraph
+ ├── Chat Node
+ ├── RAG Node
+ └── Response Node
+        │
+        ▼
+Retriever
+        │
+        ▼
+Qdrant
+        │
+        ▼
+Context Builder
+        │
+        ▼
+Ollama
+```
+
+------------------------------------------------------------------------
+
+# RAG Pipeline
+
+``` text
+Upload Document
+      │
+      ▼
+Extract Text
+      │
+      ▼
+Chunk Document
+      │
+      ▼
+Generate Embeddings
+      │
+      ▼
+Store in Qdrant
+      │
+      ▼
+User Question
+      │
+      ▼
+Retriever
+      │
+      ▼
+Context Builder
+      │
+      ▼
+Ollama
+      │
+      ▼
+Grounded Response + Sources
+```
+
+------------------------------------------------------------------------
+
+# Tech Stack
+
+## Backend
+
+-   FastAPI
+-   SQLAlchemy
+-   Alembic
+-   Pydantic
+-   AsyncIO
+
+## AI
+
+-   LangGraph
+-   Ollama
+-   qwen2.5:7b
+-   nomic-embed-text
+-   RAG
+
+## Database
+
+-   PostgreSQL
+-   Qdrant
+
+## DevOps
+
+-   Docker
+-   Docker Compose
+
+------------------------------------------------------------------------
+
+# Project Structure
+
+``` text
+backend/
+ ├── app/
+ │   ├── agents/
+ │   ├── api/
+ │   ├── clients/
+ │   ├── core/
+ │   ├── database/
+ │   ├── models/
+ │   ├── prompts/
+ │   ├── repositories/
+ │   ├── schemas/
+ │   └── services/
+ ├── alembic/
+ ├── storage/
+ └── tests/
+```
+
+------------------------------------------------------------------------
+
+# Installation
+
+``` bash
+git clone https://github.com/saeidkh96/redpa-ai.git
+cd redpa-ai
+
 python -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python -m uvicorn redtwin.api:app --reload
+
+# Windows
+.venv\Scripts\activate
+
+pip install -r requirements.txt
 ```
 
-Open `http://127.0.0.1:8000`. The API docs are at `/docs`.
+Run infrastructure:
 
-Run the deterministic CLI demo:
-
-```bash
-python -m redtwin.demo
+``` bash
+docker compose up -d
 ```
 
-Run validation:
+Start Ollama:
 
-```bash
-python -m pytest -q
-python -m ruff check .
+``` bash
+ollama serve
+
+ollama pull qwen2.5:7b
+ollama pull nomic-embed-text
 ```
 
-## API
+Run API:
 
-| Method | Path | Purpose |
-|---|---|---|
-| GET | `/health` | Service health and version |
-| GET | `/v1/twin/state` | Current twin state and factory KPIs |
-| POST | `/v1/twin/tick` | Advance the simulated factory |
-| POST | `/v1/scenarios/run` | Run a what-if scenario |
-| GET | `/v1/insights` | Explainable risk/anomaly findings |
-| GET | `/v1/capabilities` | RedNexus discovery document |
-| GET | `/v1/events` | Recent integration events |
+``` bash
+uvicorn app.main:app --reload
+```
 
-## Ecosystem boundary
+Swagger:
 
-RedTwin owns the operational model and scenario simulation. RedPulse can consume telemetry for predictive maintenance; RedPA can explain insights and create approved workflows; RedNexus discovers the service and coordinates versioned events. No project code or database is shared directly.
+    http://127.0.0.1:8000/docs
 
-## License
+------------------------------------------------------------------------
 
-Source-available portfolio project. See [LICENSE](LICENSE).
+# Current Capabilities
+
+-   Authentication
+-   Conversations
+-   Persistent Chat
+-   Document Upload
+-   Document Parsing
+-   Chunking
+-   Embeddings
+-   Qdrant Integration
+-   Retriever Service
+-   Context Builder
+-   Conversational RAG
+-   LangGraph Routing
+-   Source Attribution
+
+------------------------------------------------------------------------
+
+# Roadmap
+
+## Completed
+
+-   Authentication
+-   Chat API
+-   LangGraph
+-   Planner Agent
+-   RAG
+-   Retriever
+-   Context Builder
+-   Source Citation
+
+## Planned
+
+-   Streaming Responses
+-   Conversation Memory
+-   Tool Calling
+-   SQL Agent
+-   Research Agent
+-   Human Review
+-   Monitoring
+-   GitHub Actions
+-   MCP Integration
+-   A2A Protocol
+
+------------------------------------------------------------------------
+
+# Why RedPA AI?
+
+RedPA AI is designed as a portfolio-quality project demonstrating modern
+backend engineering, retrieval-augmented generation, production-ready
+API design, and agent orchestration. The architecture emphasizes modular
+services, clear separation of concerns, and extensibility for future
+enterprise AI capabilities.
+
+------------------------------------------------------------------------
+
+# License
+
+MIT License
+
+Copyright (c) 2026 Saeed Khalilian
