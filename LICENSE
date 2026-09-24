@@ -1,23 +1,23 @@
-RedNexus AI Source-Available License
+RedTwin AI Source-Available License
 Version 1.0 — September 2026
 
 Copyright (c) 2026 Saeid Khalilian
 All rights reserved except as expressly granted under this License.
 
-IMPORTANT: RedNexus AI is source-available software. It is not licensed as open-source
+IMPORTANT: RedTwin AI is source-available software. It is not licensed as open-source
 software under an OSI-approved license.
 
 1. DEFINITIONS
 
-"Software" means the RedNexus AI source code, object code, documentation, configuration,
-workflow templates, capability contracts, manifests, examples, and other materials
-distributed with this License.
+"Software" means the RedTwin AI source code, object code, documentation, configuration,
+factory models, scenario definitions, dashboards, capability and event contracts, examples,
+and other materials distributed with this License.
 
 "Licensor" means Saeid Khalilian, the copyright holder of the Software.
 
 "Connected Service" means any separate software, project, model, API, or service that the
-Software can call, coordinate, or exchange data with, including RedPA, RedGuard, RedPulse,
-RedForge, RedWorld AI, and third-party model, embedding, or API providers.
+Software can call, coordinate, or exchange data with, including RedNexus AI, RedPA, RedGuard,
+RedPulse, RedForge, RedWorld AI, and third-party model, embedding, or API providers.
 
 "Non-Commercial Purpose" means use primarily for personal, educational, academic research,
 evaluation, experimentation, or other purposes that are not intended for commercial
@@ -47,14 +47,16 @@ Without prior written permission or a separate commercial license from the Licen
 may not use the Software, in whole or in part, to:
 
 a. provide a paid product, service, platform, API, hosted service, SaaS offering, or
-   commercial workflow, orchestration, or agent-coordination service;
+   commercial digital-twin, simulation, monitoring, or operational-analytics service;
 b. incorporate the Software or a derivative work into a proprietary or commercial product;
 c. sell, license, sublicense, rent, lease, or otherwise commercially exploit the Software
    or a derivative work;
 d. use the Software to provide paid consulting, managed services, or commercial services
    where the Software forms a material part of the service;
-e. commercially redistribute the Software or derivative works; or
-f. otherwise use the Software primarily for commercial advantage or monetary compensation.
+e. commercially redistribute the Software or derivative works;
+f. operate, monitor, simulate, or analyse the facilities, equipment, or operations of a
+   business, including for internal business purposes; or
+g. otherwise use the Software primarily for commercial advantage or monetary compensation.
 
 A separate commercial license may be obtained from the Licensor.
 
@@ -67,7 +69,7 @@ You may not publicly distribute, publish, sublicense, or make available a modifi
 derivative version of the Software without prior written permission from the Licensor.
 
 This restriction does not prevent ordinary Git hosting functionality that creates a public
-fork solely for proposing changes back to the original RedNexus AI repository, provided
+fork solely for proposing changes back to the original RedTwin AI repository, provided
 that the fork remains subject to this License, retains all copyright and license notices,
 and is not used for a prohibited purpose.
 
@@ -88,11 +90,11 @@ You must preserve this License, all copyright notices, attribution notices, and 
 notices included with the Software in any copy that you are permitted to make.
 
 You may not represent yourself or another person or organization as the creator, owner,
-official maintainer, or authorized commercial provider of RedNexus AI.
+official maintainer, or authorized commercial provider of RedTwin AI.
 
 7. NO IMPLIED ENDORSEMENT
 
-Use of the Software does not grant permission to use the name "RedNexus AI", the names of
+Use of the Software does not grant permission to use the name "RedTwin AI", the names of
 any other Red projects, the name "Saeid Khalilian", logos, trademarks, or other branding to
 state or imply endorsement, sponsorship, partnership, certification, or affiliation.
 
@@ -125,28 +127,24 @@ RELIABILITY, SECURITY, AVAILABILITY, TITLE, AND NON-INFRINGEMENT.
 THE LICENSOR DOES NOT WARRANT THAT THE SOFTWARE WILL BE ERROR-FREE, SECURE, UNINTERRUPTED,
 ACCURATE, COMPLETE, OR SUITABLE FOR ANY PARTICULAR PURPOSE.
 
-WORKFLOW RESULTS, AGENT OR MODEL OUTPUTS, PLANS, ANALYSES, EXPLANATIONS, RISK ASSESSMENTS,
-OR OTHER OUTPUTS PRODUCED OR COORDINATED BY THE SOFTWARE ARE COMPUTATIONAL OUTPUTS AND MUST
-NOT BE RELIED UPON AS FINANCIAL, INVESTMENT, LEGAL, TAX, ACCOUNTING, ENGINEERING, SAFETY,
-MEDICAL, BUSINESS, OR OTHER PROFESSIONAL ADVICE.
+SIMULATED TELEMETRY, SCENARIO RESULTS, RISK SCORES, ANOMALY FINDINGS, EXPLANATIONS,
+RECOMMENDATIONS, OR OTHER OUTPUTS PRODUCED BY THE SOFTWARE ARE SIMULATED OR COMPUTATIONAL
+OUTPUTS. THEY DO NOT DESCRIBE ANY REAL FACILITY OR EQUIPMENT AND MUST NOT BE RELIED UPON AS
+ENGINEERING, MAINTENANCE, SAFETY, OPERATIONAL, FINANCIAL, LEGAL, OR OTHER PROFESSIONAL ADVICE.
 
-PERMISSION, HUMAN-APPROVAL, VALIDATION, AND IDEMPOTENCY FEATURES OF THE SOFTWARE REDUCE BUT
-DO NOT ELIMINATE RISK. WHEN YOU RUN THE SOFTWARE, YOU ARE SOLELY RESPONSIBLE FOR:
-
-a. ACTIONS PERFORMED BY OR THROUGH CONNECTED SERVICES;
-b. APPROVAL DECISIONS MADE BY YOU OR BY REVIEWERS YOU AUTHORIZE;
-c. FEES, CHARGES, OR USAGE COSTS INCURRED WITH MODEL, EMBEDDING, API, HOSTING, OR OTHER
-   THIRD-PARTY PROVIDERS;
-d. DATA YOU CHOOSE TO SEND TO CONNECTED SERVICES OR THIRD-PARTY PROVIDERS; AND
-e. SECURING YOUR CREDENTIALS, TOKENS, DATABASES, AND CONFIGURATION.
+THE SOFTWARE IS NOT DESIGNED, TESTED, OR CERTIFIED FOR CONTROLLING, MONITORING, OR MAKING
+DECISIONS ABOUT REAL MACHINERY, INDUSTRIAL CONTROL SYSTEMS, OR SAFETY-CRITICAL ENVIRONMENTS.
+IF YOU CONNECT THE SOFTWARE TO REAL DATA, EQUIPMENT, OR CONNECTED SERVICES, YOU ARE SOLELY
+RESPONSIBLE FOR THAT USE AND ITS CONSEQUENCES, FOR THE DATA YOU SEND TO ANY CONNECTED SERVICE
+OR THIRD-PARTY PROVIDER, AND FOR SECURING YOUR CREDENTIALS AND CONFIGURATION.
 
 11. LIMITATION OF LIABILITY
 
 TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE LICENSOR BE
 LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, CONSEQUENTIAL, OR OTHER
 DAMAGES, OR FOR ANY LOSS OF PROFITS, REVENUE, BUSINESS, DATA, GOODWILL, OPPORTUNITY, OR
-OTHER LOSS, INCLUDING COSTS INCURRED WITH THIRD-PARTY PROVIDERS OR LOSSES CAUSED BY ACTIONS
-OF CONNECTED SERVICES, ARISING FROM OR RELATED TO THE SOFTWARE OR ITS USE, MISUSE,
+OTHER LOSS, INCLUDING EQUIPMENT DAMAGE, PRODUCTION LOSS, OR LOSSES CAUSED BY DECISIONS BASED
+ON SIMULATED OUTPUTS OR BY ACTIONS OF CONNECTED SERVICES, ARISING FROM OR RELATED TO THE SOFTWARE OR ITS USE, MISUSE,
 INABILITY TO USE, MODIFICATION, DISTRIBUTION, OUTPUTS, OR RELIANCE ON ITS OUTPUTS, WHETHER
 BASED ON CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, OR ANY OTHER LEGAL THEORY, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
@@ -156,8 +154,8 @@ cannot lawfully be excluded or limited under applicable law.
 
 12. CONNECTED SERVICES AND THIRD-PARTY COMPONENTS
 
-RedPA, RedGuard, RedPulse, RedForge, RedWorld AI, and any other project that the Software
-can connect to are separate works. Each is governed by its own license and terms. This
+RedNexus AI, RedPA, RedGuard, RedPulse, RedForge, RedWorld AI, and any other project that
+the Software can connect to are separate works. Each is governed by its own license and terms. This
 License grants no rights in any of those projects, and receiving the Software does not
 grant access to them.
 
@@ -182,8 +180,8 @@ remaining provisions continue in effect, to the extent permitted by applicable l
 
 15. ENTIRE LICENSE
 
-This License states the permissions granted for the source-available version of RedNexus AI
+This License states the permissions granted for the source-available version of RedTwin AI
 unless the Licensor and the applicable user have entered into a separate written agreement.
 
 For commercial licensing or permissions beyond this License, contact the Licensor through
-the official RedNexus AI repository or other contact information published by the Licensor.
+the official RedTwin AI repository or other contact information published by the Licensor.

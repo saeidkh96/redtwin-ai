@@ -1,264 +1,78 @@
-# 🚀 RedPA AI
+# RedTwin AI
 
-![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-Production-009688?logo=fastapi)
-![LangGraph](https://img.shields.io/badge/LangGraph-Agentic_AI-purple)
-![Ollama](https://img.shields.io/badge/Ollama-Local_LLM-black)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-336791?logo=postgresql)
-![Qdrant](https://img.shields.io/badge/Qdrant-Vector_DB-DC244C)
-![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?logo=docker)
-![License](https://img.shields.io/badge/License-MIT-green)
+> **Source-available for non-commercial use. Not open source.** See [LICENSE](LICENSE).
 
-**RedPA AI** is an open-source, production-oriented Agentic AI platform
-for building intelligent assistants with Retrieval-Augmented Generation
-(RAG), document understanding, conversational memory (planned), and
-multi-agent workflows.
+**RedTwin AI** is a Smart Factory Digital Twin. It maintains a simulated operational state, runs deterministic what-if scenarios, explains operational risk, and publishes integration-ready events for the RedNexus ecosystem.
 
-------------------------------------------------------------------------
+RedTwin is the simulation and explanation layer of the Red ecosystem. Its current risk logic is rule-based and fully traceable. Learned models, such as predictive maintenance from RedPulse, connect through versioned contracts rather than being built into the twin.
 
-# Features
+## v1.0.0 capabilities
 
--   JWT Authentication
--   Conversation Management
--   Persistent Chat History
--   LangGraph Agent Workflow
--   Planner-based Routing
--   Conversational RAG
--   Document Upload
--   Text Extraction
--   Intelligent Chunking
--   Embedding Generation
--   Semantic Retrieval
--   Qdrant Vector Database
--   Ollama Local Models
--   PostgreSQL Persistence
--   Async FastAPI API
--   Docker Ready
--   Swagger Documentation
+- Five-machine factory model with temperature, vibration, energy, throughput and health telemetry
+- Deterministic tick runtime with state transitions: `idle`, `running`, `degraded`, `failed`
+- What-if scenarios: overload, cooling failure, vibration spike and recovery
+- Rule-based, explainable risk and anomaly insights
+- FastAPI REST API and a dependency-free web dashboard
+- Versioned RedNexus capability/event contract
+- Docker, CI, tests and release evidence
 
-------------------------------------------------------------------------
+## How risk is scored
 
-# Architecture
+Every insight can be traced to a threshold, so there are no black-box scores.
 
-``` text
-Client
-   │
-   ▼
-FastAPI API
-   │
-   ▼
-Chat Service
-   │
-   ▼
-Orchestrator
-   │
-   ▼
-LangGraph
- ├── Chat Node
- ├── RAG Node
- └── Response Node
-        │
-        ▼
-Retriever
-        │
-        ▼
-Qdrant
-        │
-        ▼
-Context Builder
-        │
-        ▼
-Ollama
-```
+| Signal | Condition | Risk added |
+|---|---|---|
+| Temperature | 70 °C or higher | +40 |
+| Vibration | 4 mm/s or higher | +50 |
+| Machine status | `degraded` or `failed` | +25 |
 
-------------------------------------------------------------------------
+A total of 70 or more is **critical**; anything above zero is a **warning**. Scores are capped at 100. Each insight states its causes, for example *"Risk is driven by temperature 74°C, vibration 5.1 mm/s."*
 
-# RAG Pipeline
+This is deliberate for v1.0.0: a deterministic twin with transparent rules is testable and gives learned models a stable baseline to be compared against.
 
-``` text
-Upload Document
-      │
-      ▼
-Extract Text
-      │
-      ▼
-Chunk Document
-      │
-      ▼
-Generate Embeddings
-      │
-      ▼
-Store in Qdrant
-      │
-      ▼
-User Question
-      │
-      ▼
-Retriever
-      │
-      ▼
-Context Builder
-      │
-      ▼
-Ollama
-      │
-      ▼
-Grounded Response + Sources
-```
+## Quick start
 
-------------------------------------------------------------------------
-
-# Tech Stack
-
-## Backend
-
--   FastAPI
--   SQLAlchemy
--   Alembic
--   Pydantic
--   AsyncIO
-
-## AI
-
--   LangGraph
--   Ollama
--   qwen2.5:7b
--   nomic-embed-text
--   RAG
-
-## Database
-
--   PostgreSQL
--   Qdrant
-
-## DevOps
-
--   Docker
--   Docker Compose
-
-------------------------------------------------------------------------
-
-# Project Structure
-
-``` text
-backend/
- ├── app/
- │   ├── agents/
- │   ├── api/
- │   ├── clients/
- │   ├── core/
- │   ├── database/
- │   ├── models/
- │   ├── prompts/
- │   ├── repositories/
- │   ├── schemas/
- │   └── services/
- ├── alembic/
- ├── storage/
- └── tests/
-```
-
-------------------------------------------------------------------------
-
-# Installation
-
-``` bash
-git clone https://github.com/saeidkh96/redpa-ai.git
-cd redpa-ai
-
+```bash
 python -m venv .venv
-
-# Windows
-.venv\Scripts\activate
-
-pip install -r requirements.txt
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m uvicorn redtwin.api:app --reload
 ```
 
-Run infrastructure:
+Open `http://127.0.0.1:8000`. The API docs are at `/docs`.
 
-``` bash
-docker compose up -d
+Run the deterministic CLI demo:
+
+```bash
+python -m redtwin.demo
 ```
 
-Start Ollama:
+Run validation:
 
-``` bash
-ollama serve
-
-ollama pull qwen2.5:7b
-ollama pull nomic-embed-text
+```bash
+python -m pytest -q
+python -m ruff check .
 ```
 
-Run API:
+## API
 
-``` bash
-uvicorn app.main:app --reload
-```
+| Method | Path | Purpose |
+|---|---|---|
+| GET | `/health` | Service health and version |
+| GET | `/v1/twin/state` | Current twin state and factory KPIs |
+| POST | `/v1/twin/tick` | Advance the simulated factory |
+| POST | `/v1/scenarios/run` | Run a what-if scenario |
+| GET | `/v1/insights` | Explainable risk/anomaly findings |
+| GET | `/v1/capabilities` | RedNexus discovery document |
+| GET | `/v1/events` | Recent integration events |
 
-Swagger:
+## Ecosystem boundary
 
-    http://127.0.0.1:8000/docs
+RedTwin owns the operational model and scenario simulation. RedPulse can consume telemetry for predictive maintenance; RedPA can explain insights and create approved workflows; RedNexus discovers the service and coordinates versioned events. No project code or database is shared directly.
 
-------------------------------------------------------------------------
+## License
 
-# Current Capabilities
+RedTwin AI is released under the **RedTwin AI Source-Available License 1.0**.
 
--   Authentication
--   Conversations
--   Persistent Chat
--   Document Upload
--   Document Parsing
--   Chunking
--   Embeddings
--   Qdrant Integration
--   Retriever Service
--   Context Builder
--   Conversational RAG
--   LangGraph Routing
--   Source Attribution
+You may view, study, download, run and privately modify it for personal, educational, research and other non-commercial purposes. Commercial use, including use inside a business to operate, monitor or analyse real facilities, requires a separate written license.
 
-------------------------------------------------------------------------
-
-# Roadmap
-
-## Completed
-
--   Authentication
--   Chat API
--   LangGraph
--   Planner Agent
--   RAG
--   Retriever
--   Context Builder
--   Source Citation
-
-## Planned
-
--   Streaming Responses
--   Conversation Memory
--   Tool Calling
--   SQL Agent
--   Research Agent
--   Human Review
--   Monitoring
--   GitHub Actions
--   MCP Integration
--   A2A Protocol
-
-------------------------------------------------------------------------
-
-# Why RedPA AI?
-
-RedPA AI is designed as a portfolio-quality project demonstrating modern
-backend engineering, retrieval-augmented generation, production-ready
-API design, and agent orchestration. The architecture emphasizes modular
-services, clear separation of concerns, and extensibility for future
-enterprise AI capabilities.
-
-------------------------------------------------------------------------
-
-# License
-
-MIT License
-
-Copyright (c) 2026 Saeed Khalilian
+RedTwin produces simulated outputs only. It is not designed or certified for controlling or making decisions about real machinery. See [LICENSE](LICENSE) for the full terms.
